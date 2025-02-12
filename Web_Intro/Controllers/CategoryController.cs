@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Web_Intro.DTO.CategoryDTO;
 using Web_Intro.Entities;
-using Web_Intro.Services;
+using Web_Intro.Services.Abstracts;
 
 namespace Web_Intro.Controllers;
 

@@ -1,8 +1,9 @@
 ﻿using Web_Intro.DTO.CategoryDTO;
 using Web_Intro.Entities;
 using Web_Intro.Repositories.Abstracts;
+using Web_Intro.Services.Abstracts;
 
-namespace Web_Intro.Services;
+namespace Web_Intro.Services.Concretes;
 
 public class CategoryService(ICategoryRepository categoryRepository) : ICategoryService
 {
@@ -14,7 +15,7 @@ public class CategoryService(ICategoryRepository categoryRepository) : ICategory
             var category = new Category
             {
                 CategoryName = categoryDTO.Name,
-            
+
             };
             _categoryRepository.Add(category);
             return category;
@@ -50,7 +51,7 @@ public class CategoryService(ICategoryRepository categoryRepository) : ICategory
         var mainC = _categoryRepository.GetbyId(category.Id);
         mainC.CategoryName = category.Name;
         _categoryRepository.Update(mainC);
-       
+
         return true;
     }
 }

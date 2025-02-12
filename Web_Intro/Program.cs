@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Web_Intro.Context;
-using Web_Intro.Repositories;
 using Web_Intro.Repositories.Abstracts;
-using Web_Intro.Services;
+using Web_Intro.Repositories.Concretes;
+using Web_Intro.Services.Abstracts;
+using Web_Intro.Services.Concretes;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,8 @@ builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IcustomerService, CustomerService>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IShipperRepository, ShipperRepository>();
+builder.Services.AddScoped<IShipperService, ShipperService>();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

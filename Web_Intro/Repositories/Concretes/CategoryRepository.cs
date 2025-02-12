@@ -2,7 +2,7 @@
 using Web_Intro.Entities;
 using Web_Intro.Repositories.Abstracts;
 
-namespace Web_Intro.Repositories;
+namespace Web_Intro.Repositories.Concretes;
 
 public class CategoryRepository(EcommerceDbContext dbContext) : ICategoryRepository
 {
@@ -22,12 +22,12 @@ public class CategoryRepository(EcommerceDbContext dbContext) : ICategoryReposit
 
     public IQueryable<Category> GetAll()
     {
-     return   _context.Categories;
+        return _context.Categories;
     }
 
     public Category GetbyId(int id)
     {
-      return  _context.Categories.FirstOrDefault(c => c.CategoryID == id);
+        return _context.Categories.FirstOrDefault(c => c.CategoryID == id);
     }
 
     public void Update(Category category)

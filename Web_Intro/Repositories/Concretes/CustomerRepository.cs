@@ -3,7 +3,7 @@ using Web_Intro.Context;
 using Web_Intro.Entities;
 using Web_Intro.Repositories.Abstracts;
 
-namespace Web_Intro.Repositories;
+namespace Web_Intro.Repositories.Concretes;
 
 public class CustomerRepository(EcommerceDbContext dbcontext) : ICustomerRepository
 {

@@ -2,8 +2,9 @@
 using Web_Intro.Entities;
 using Web_Intro.Repositories;
 using Web_Intro.Repositories.Abstracts;
+using Web_Intro.Services.Abstracts;
 
-namespace Web_Intro.Services
+namespace Web_Intro.Services.Concretes
 {
     public class CustomerService(ICustomerRepository customerRepository) : IcustomerService
     {
@@ -14,7 +15,7 @@ namespace Web_Intro.Services
             _customerRepository.Add(newCustomer);
             return newCustomer;
         }
-        
+
         public bool Delete(string customerid)
         {
             _customerRepository.Delete(customerid);
@@ -25,13 +26,13 @@ namespace Web_Intro.Services
         {
             var list = _customerRepository.GetAll();
             return [.. list];
-        
+
         }
 
         public Customer GetbyId(string id)
         {
             var current = _customerRepository.GetbyId(id);
-            if (current!=null)
+            if (current != null)
             {
                 return current;
 

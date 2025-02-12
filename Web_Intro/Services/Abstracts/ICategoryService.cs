@@ -2,7 +2,7 @@
 using Web_Intro.DTO.CustomerDtos;
 using Web_Intro.Entities;
 
-namespace Web_Intro.Services;
+namespace Web_Intro.Services.Abstracts;
 
 public interface ICategoryService
 {
