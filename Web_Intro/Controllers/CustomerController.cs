@@ -40,6 +40,12 @@ public class CustomerController(IcustomerService service) : ControllerBase
         _customerService.Update(id);
         return Ok();
     }
+    [HttpDelete]
+    public IActionResult Delete(string id)
+    {
+        _customerService.Delete(id);
+        return Ok();
+    }
 
 }
 

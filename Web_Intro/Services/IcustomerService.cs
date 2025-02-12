@@ -6,7 +6,7 @@ namespace Web_Intro.Services;
 public interface IcustomerService
 {
     Customer Add(AddDto customer);
-    bool Delete(Customer customer);
+    bool Delete(string customerid);
     bool Update(string customerid);
     Customer GetbyId(string id);
    List<Customer> GetAll();

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Web_Intro.Context;
 using Web_Intro.Repositories;
+using Web_Intro.Repositories.Abstracts;
 using Web_Intro.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,8 @@ builder.Services.AddDbContext<EcommerceDbContext>(opt=>opt.UseSqlServer(conn));
 
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IcustomerService, CustomerService>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

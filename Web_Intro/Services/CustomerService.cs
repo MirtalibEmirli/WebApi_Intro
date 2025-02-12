@@ -1,6 +1,7 @@
 ﻿using Web_Intro.DTO.CustomerDtos;
 using Web_Intro.Entities;
 using Web_Intro.Repositories;
+using Web_Intro.Repositories.Abstracts;
 
 namespace Web_Intro.Services
 {
@@ -13,10 +14,10 @@ namespace Web_Intro.Services
             _customerRepository.Add(newCustomer);
             return newCustomer;
         }
-
-        public bool Delete(Customer customer)
+        
+        public bool Delete(string customerid)
         {
-            _customerRepository.Delete(customer);
+            _customerRepository.Delete(customerid);
             return true;
         }
 
@@ -46,3 +47,15 @@ namespace Web_Intro.Services
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

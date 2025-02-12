@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Web_Intro.Context;
 using Web_Intro.Entities;
+using Web_Intro.Repositories.Abstracts;
 
 namespace Web_Intro.Repositories;
 
@@ -13,13 +14,14 @@ public class CustomerRepository(EcommerceDbContext dbcontext) : ICustomerReposit
         ecommerceDbContext.SaveChanges();
     }
 
-    public void Delete(Customer customer)
+    public void Delete(string customerid)
     {
+        var customer = GetbyId(customerid);
         ecommerceDbContext.Remove(customer);
         ecommerceDbContext.SaveChanges();
     }
 
- 
+
 
     public Customer GetbyId(string id)
     {
@@ -34,7 +36,7 @@ public class CustomerRepository(EcommerceDbContext dbcontext) : ICustomerReposit
         ecommerceDbContext.SaveChanges();
     }
 
-    IQueryable<Customer> ICustomerRepository.GetAll()
+    public IQueryable<Customer> GetAll()
     {
         return ecommerceDbContext.Customers;
     }
