@@ -13,9 +13,9 @@ public class ShipperRepository(EcommerceDbContext context) : IShipperRepository
         _context.SaveChanges(); 
     }
 
-    public void Delete(int shipperId)
+    public void Delete(Shipper shipper)
     {
-        var shipper = GetByShipperId(shipperId);
+        
         _context.Shippers.Remove(shipper);
         _context.SaveChanges();
 

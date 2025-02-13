@@ -3,34 +3,47 @@ using Web_Intro.Entities;
 using Web_Intro.Repositories.Abstracts;
 using Web_Intro.Services.Abstracts;
 
-namespace Web_Intro.Services.Concretes
+namespace Web_Intro.Services.Concretes;
+
+public class ShipperService(IShipperRepository shipperRepository) : IShipperService
 {
-    public class ShipperService(IShipperRepository shipperRepository) : IShipperService
+    private readonly IShipperRepository _shipperRepository=shipperRepository; 
+    public List<Shipper> Add(ShipperDto shipper)
     {
-        private readonly IShipperRepository _shipperRepository=shipperRepository; 
-        public List<Shipper> Add(ShipperDto shipper)
-        {
-            throw new NotImplementedException();
-        }
+        var shipperM = new Shipper{
+        CompanyName=shipper.Name,
+        Phone=shipper.Phone,
 
-        public bool Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
+        };
+        _shipperRepository.Add(shipperM);   
+        return _shipperRepository.GetAll().ToList();
+    }
 
-        public List<Shipper> GetAll()
-        {
-            throw new NotImplementedException();
-        }
+    public bool Delete(int id)
+    {
+        var sp= GetById(id);
+        _shipperRepository.Delete(sp);
+        return true;    
+    }
 
-        public Shipper GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+    public List<Shipper> GetAll()
+    {
+        return _shipperRepository.GetAll().ToList();
 
-        public Shipper Update(ShipperDto shipper)
-        {
-            throw new NotImplementedException();
-        }
+    }
+
+    public Shipper GetById(int id)
+    {
+        return _shipperRepository.GetByShipperId(id);
+    }
+
+    public Shipper Update(ShipperDto shipper)
+    {
+        var shipperM = _shipperRepository.GetByShipperId(shipper.Id);
+        shipperM.CompanyName=shipper.Name;  
+        shipperM.Phone=shipper.Phone;   
+        _shipperRepository.Update
+            (shipperM); 
+        return shipperM;    
     }
 }
